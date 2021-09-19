@@ -1,0 +1,28 @@
+package com.douglasalipio.weathercheck.data.model
+
+import com.douglasalipio.weathercheck.domain.Forecast
+import com.douglasalipio.weathercheck.domain.Mapper
+import kotlin.collections.List
+
+class ForecastModelToForecastMapper : Mapper<ForecastModel, Forecast> {
+
+    override fun mapToList(from: ForecastModel): List<Forecast> {
+        val forecastList = mutableListOf<Forecast>()
+        from.list.forEach {
+            forecastList.add(
+                Forecast(
+                    iconUrl = "http://openweathermap.org/img/wn/${it.weather.last().icon}@2x.png",
+                    description = it.weather.last().description,
+                    date = it.dateUtcString,
+                    feelsLike = it.main.feelsLike.toInt().toString(),
+                    temperature = it.main.temp.toInt().toString()
+                )
+            )
+        }
+        return forecastList
+    }
+
+    override fun map(from: ForecastModel): Forecast {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
