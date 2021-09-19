@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "WeatherCheck"
 include ':app'
 include ':data'
+include ':domain'
