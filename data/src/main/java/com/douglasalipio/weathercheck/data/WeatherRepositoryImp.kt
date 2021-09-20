@@ -4,6 +4,7 @@ import com.douglasalipio.weathercheck.data.mapper.ForecastModelToForecastMapper
 import com.douglasalipio.weathercheck.data.mapper.WeatherModelToWeatherMapper
 import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
 import com.douglasalipio.weathercheck.domain.entity.Weather
+import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

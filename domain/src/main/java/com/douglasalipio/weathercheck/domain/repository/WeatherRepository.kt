@@ -1,6 +1,5 @@
-package com.douglasalipio.weathercheck.data
+package com.douglasalipio.weathercheck.domain.repository
 
-import com.douglasalipio.weathercheck.domain.entity.Forecast
 import com.douglasalipio.weathercheck.domain.entity.Weather
 import kotlinx.coroutines.flow.Flow
 

@@ -3,11 +3,11 @@ package com.douglasalipio.weathercheck.data
 import com.douglasalipio.weathercheck.data.mapper.ForecastModelToForecastMapper
 import com.douglasalipio.weathercheck.data.mapper.WeatherModelToWeatherMapper
 import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
+import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import com.nhaarman.mockitokotlin2.given
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
 import mockForecastModel
 import mockWeatherModel

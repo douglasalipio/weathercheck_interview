@@ -1,10 +1,9 @@
-import com.douglasalipio.weathercheck.domain.entity.Forecast
 import com.douglasalipio.weathercheck.data.model.*
 import com.douglasalipio.weathercheck.data.model.List
-import com.douglasalipio.weathercheck.domain.entity.Weather
+import com.douglasalipio.weathercheck.domain.entity.Forecast
 
 
-fun mockWeather() = Weather(
+fun mockWeather() = com.douglasalipio.weathercheck.domain.entity.Weather(
     city = "city",
     country = "country",
     humidity = "40",
