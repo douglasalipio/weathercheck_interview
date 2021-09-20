@@ -20,6 +20,4 @@ class WeatherModelToWeatherMapperTest {
         // then
         assertEquals(expectedWeatherInfo.city, mappingResult.city)
     }
-
-
 }
