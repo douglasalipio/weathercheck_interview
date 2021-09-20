@@ -6,8 +6,10 @@ import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
 import com.nhaarman.mockitokotlin2.given
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
+import mockForecastModel
 import mockWeatherModel
 import org.junit.Before
 import org.junit.Test
@@ -36,12 +38,13 @@ class WeatherRepositoryTest {
     @Test
     fun `should request weather from repository`() = runBlocking {
         //Given
-        val weatherModelExpected = mockWeatherModel()
-        val city = "Recife"
-        given(remoteDataSourceMock.getWeatherBy(anyString())).willReturn(weatherModelExpected)
+        given(remoteDataSourceMock.getWeatherBy(anyString())).willReturn(mockWeatherModel())
+        given(remoteDataSourceMock.getForecastBy(anyString())).willReturn(mockForecastModel())
+
         //When
-        val weatherActual = weatherRepository.requestWeatherBy(city).single()
+        val weatherActual = weatherRepository.requestWeatherBy("Recife").first()
+
         //Then
-        assertEquals(weatherModelExpected, weatherActual)
+        assertEquals(mockWeatherModel().name, weatherActual.city)
     }
 }
