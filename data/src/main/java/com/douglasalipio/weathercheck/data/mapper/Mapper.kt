@@ -1,4 +1,4 @@
-package com.douglasalipio.weathercheck.domain
+package com.douglasalipio.weathercheck.data.mapper
 
 interface Mapper<in FROM, out TO> {
 

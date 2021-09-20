@@ -41,5 +41,10 @@ dependencies {
     implementation networkLibraries.okHttp
     implementation networkLibraries.logging
 
+    implementation asynchronousLibraries.coroutineCore
+    implementation asynchronousLibraries.coroutineTest
+
     testImplementation testLibraries.junit
+    testImplementation testLibraries.hamcrest
+    testImplementation testLibraries.mockito
 }

@@ -1,4 +1,4 @@
-package com.douglasalipio.weathercheck.domain
+package com.douglasalipio.weathercheck.domain.entity
 
 class Forecast(
     val iconUrl: String,

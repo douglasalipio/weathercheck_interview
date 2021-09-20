@@ -6,7 +6,7 @@ import kotlin.collections.List
 data class WeatherModel(
     @SerializedName("name")
     val name: String,
-    val forecastDtoDetail: List<ForecastModel>,
+    val forecasts: List<ForecastModel>,
     @SerializedName("main")
     val main: Main,
     @SerializedName("dt")

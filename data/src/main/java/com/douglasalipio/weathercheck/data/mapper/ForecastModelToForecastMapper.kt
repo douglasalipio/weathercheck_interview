@@ -1,7 +1,7 @@
-package com.douglasalipio.weathercheck.data.model
+package com.douglasalipio.weathercheck.data.mapper
 
-import com.douglasalipio.weathercheck.domain.Forecast
-import com.douglasalipio.weathercheck.domain.Mapper
+import com.douglasalipio.weathercheck.domain.entity.Forecast
+import com.douglasalipio.weathercheck.data.model.ForecastModel
 import kotlin.collections.List
 
 class ForecastModelToForecastMapper : Mapper<ForecastModel, Forecast> {

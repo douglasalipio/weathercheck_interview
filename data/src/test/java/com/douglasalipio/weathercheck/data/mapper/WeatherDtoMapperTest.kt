@@ -1,5 +1,6 @@
-package com.douglasalipio.weathercheck.data.model
+package com.douglasalipio.weathercheck.data.mapper
 
+import com.douglasalipio.weathercheck.data.mapper.ForecastModelToForecastMapper
 import mockForecastInfo
 import mockForecastModel
 import org.junit.Assert.assertEquals
