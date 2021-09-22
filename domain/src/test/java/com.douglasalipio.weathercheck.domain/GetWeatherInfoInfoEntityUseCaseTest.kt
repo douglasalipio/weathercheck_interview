@@ -1,6 +1,6 @@
 package com.douglasalipio.weathercheck.domain
 
-import com.douglasalipio.weathercheck.domain.entity.Weather
+import com.douglasalipio.weathercheck.domain.entity.WeatherInfoEntity
 import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import com.douglasalipio.weathercheck.domain.usecase.GetWeatherInfoUseCase
 import com.nhaarman.mockitokotlin2.given
@@ -15,7 +15,7 @@ import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations.initMocks
 
-class GetWeatherInfoUseCaseTest {
+class GetWeatherInfoInfoEntityUseCaseTest {
 
     @Mock
     private lateinit var weatherRepositoryMock: WeatherRepository
@@ -40,7 +40,7 @@ class GetWeatherInfoUseCaseTest {
         assertEquals(weatherFlowExpected.first(), weatherFlowActual)
     }
 
-    private fun mockWeather() = Weather(
+    private fun mockWeather() = WeatherInfoEntity(
         city = "city",
         country = "country",
         humidity = "40",

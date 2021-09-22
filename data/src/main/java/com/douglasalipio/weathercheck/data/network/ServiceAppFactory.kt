@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit
 
 object ServiceAppFactory {
 
+    private const val BASE_URL = " https://jsonplaceholder.typicode.com/"
+
     fun create(isDebug: Boolean): ApiHelper {
         val okHttpClient = makeOkHttpClient(
             makeLoggingInterceptor(isDebug)

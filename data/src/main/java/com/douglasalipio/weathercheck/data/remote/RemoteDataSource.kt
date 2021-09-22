@@ -1,7 +1,7 @@
 package com.douglasalipio.weathercheck.data.remote
 
-import com.douglasalipio.weathercheck.data.model.ForecastModel
-import com.douglasalipio.weathercheck.data.model.WeatherModel
+import com.douglasalipio.weathercheck.data.weatherinfo.model.ForecastModel
+import com.douglasalipio.weathercheck.data.weatherinfo.model.WeatherModel
 
 interface RemoteDataSource {
 

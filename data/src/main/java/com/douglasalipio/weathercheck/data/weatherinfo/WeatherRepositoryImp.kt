@@ -1,9 +1,9 @@
-package com.douglasalipio.weathercheck.data
+package com.douglasalipio.weathercheck.data.weatherinfo
 
-import com.douglasalipio.weathercheck.data.mapper.ForecastModelToForecastMapper
-import com.douglasalipio.weathercheck.data.mapper.WeatherModelToWeatherMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.ForecastModelToForecastMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.WeatherModelToWeatherMapper
 import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
-import com.douglasalipio.weathercheck.domain.entity.Weather
+import com.douglasalipio.weathercheck.domain.entity.WeatherInfoEntity
 import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,7 +19,7 @@ class WeatherRepositoryImp(
     private val forecastMapper: ForecastModelToForecastMapper
 ) : WeatherRepository {
 
-    override suspend fun requestWeatherBy(city: String): Flow<Weather> {
+    override suspend fun requestWeatherBy(city: String): Flow<WeatherInfoEntity> {
         return flow {
             val weather = weatherMapper.map(remoteDataSource.getWeatherBy(city))
             val forecasts = forecastMapper.mapToList(remoteDataSource.getForecastBy(city))

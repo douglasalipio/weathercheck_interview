@@ -1,12 +1,12 @@
 package com.douglasalipio.weathercheck.data.mapper
 
-import com.douglasalipio.weathercheck.data.mapper.WeatherModelToWeatherMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.WeatherModelToWeatherMapper
 import mockWeather
 import mockWeatherModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class WeatherModelToWeatherMapperTest {
+class WeatherModelToWeatherInfoEntityMapperTest {
 
     private val mapper = WeatherModelToWeatherMapper()
 

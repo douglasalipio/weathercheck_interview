@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 apply from: '../config/dependencies.gradle'
 
@@ -48,6 +49,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':domain')
 
     implementation presentationLibraries.androidxCore
     implementation presentationLibraries.appCompat
@@ -55,12 +57,32 @@ dependencies {
     implementation presentationLibraries.composeUi
     implementation presentationLibraries.composeMaterial
     implementation presentationLibraries.composePreview
-    implementation presentationLibraries.lifecycle
     implementation presentationLibraries.activityCompose
     debugImplementation presentationLibraries.composeTooling
+
+   // api presentationLibraries.lifecycle
+   // api presentationLibraries.viewModelScope
+    //api asynchronousLibraries.livedataKtx
+
+    implementation "org.koin:koin-android:2.2.0"
+    implementation "org.koin:koin-androidx-scope:2.2.0"
+    implementation "org.koin:koin-androidx-viewmodel:2.2.0"
+    implementation "org.koin:koin-androidx-fragment:2.2.0"
+
 
     testImplementation testLibraries.junit
     androidTestImplementation androidTestLibraries.androidxJunit
     androidTestImplementation androidTestLibraries.espressoCore
     androidTestImplementation androidTestLibraries.composeJunit
+
+
+    implementation asynchronousLibraries.coroutineAndroid
+    implementation asynchronousLibraries.coroutineCore
+
+    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-beta01"
+
+
 }

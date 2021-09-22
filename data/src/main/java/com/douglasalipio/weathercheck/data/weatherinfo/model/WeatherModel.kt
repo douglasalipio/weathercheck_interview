@@ -1,4 +1,4 @@
-package com.douglasalipio.weathercheck.data.model
+package com.douglasalipio.weathercheck.data.weatherinfo.model
 
 import com.google.gson.annotations.SerializedName
 import kotlin.collections.List

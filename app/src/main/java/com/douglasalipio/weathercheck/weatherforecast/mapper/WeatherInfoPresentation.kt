@@ -1,6 +1,8 @@
-package com.douglasalipio.weathercheck.domain.entity
+package com.douglasalipio.weathercheck.weatherforecast.mapper
 
-class Weather(
+import com.douglasalipio.weathercheck.domain.entity.Forecast
+
+class WeatherInfoPresentation(
     val city: String,
     val country: String,
     val humidity: String,

@@ -1,8 +1,9 @@
 package com.douglasalipio.weathercheck.data
 
-import com.douglasalipio.weathercheck.data.mapper.ForecastModelToForecastMapper
-import com.douglasalipio.weathercheck.data.mapper.WeatherModelToWeatherMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.ForecastModelToForecastMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.WeatherModelToWeatherMapper
 import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
+import com.douglasalipio.weathercheck.data.weatherinfo.WeatherRepositoryImp
 import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import com.nhaarman.mockitokotlin2.given
 import junit.framework.Assert.assertEquals
@@ -18,7 +19,7 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations.initMocks
 
 @ExperimentalCoroutinesApi
-class WeatherRepositoryTest {
+class WeatherInfoEntityRepositoryTest {
 
     @Mock
     private lateinit var remoteDataSourceMock: RemoteDataSource
