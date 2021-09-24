@@ -1,18 +1,48 @@
 package com.douglasalipio.weathercheck.weatherforecast
 
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import com.douglasalipio.weathercheck.domain.Resource
+import com.douglasalipio.weathercheck.domain.entity.WeatherInfoEntity
 
 
 import com.douglasalipio.weathercheck.domain.usecase.GetWeatherInfoUseCase
+import com.douglasalipio.weathercheck.weatherforecast.mapper.WeatherInfoPresentationMapper
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WeatherInfoViewModel(private val getWeatherInfoUseCase: GetWeatherInfoUseCase) : ViewModel() {
+@HiltViewModel
+class WeatherInfoViewModel @Inject constructor(
+    private val getWeatherInfoUseCase: GetWeatherInfoUseCase,
+    private val mapper: WeatherInfoPresentationMapper
+) : ViewModel() {
 
-    var weatherInfoStream: MutableLiveData<WeatherInfoState> = MutableLiveData()
+    private val _state = mutableStateOf(WeatherInfoState())
+    val state: State<WeatherInfoState> = _state
 
-    fun fetchWeatherForecast(city: String) = liveData {
-        emit(getWeatherInfoUseCase.execute(GetWeatherInfoUseCase.Params(city)))
+    fun fetchWeatherForecast(city: String) {
+        getWeatherInfoUseCase(GetWeatherInfoUseCase.Params("")).onEach {
+
+            getWeatherInfoUseCase(GetWeatherInfoUseCase.Params(city)).onEach { result ->
+                when (result) {
+                    is Resource.Success<WeatherInfoEntity> -> {
+                        _state.value = WeatherInfoState(weatherInfo = mapper.map(it.data!!))
+                    }
+                    is Resource.Error<WeatherInfoEntity> -> {
+                        _state.value = WeatherInfoState(
+                            error = result.message ?: "An unexpected error occured"
+                        )
+                    }
+                    is Resource.Loading<WeatherInfoEntity> -> {
+                        _state.value = WeatherInfoState(isLoading = true)
+                    }
+                }
+            }
+        }.launchIn(viewModelScope)
     }
-
 }

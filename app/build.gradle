@@ -2,12 +2,12 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 apply from: '../config/dependencies.gradle'
 
 android {
     compileSdk 31
-
     defaultConfig {
         applicationId "com.douglasalipio.weathercheck"
         minSdk 21
@@ -60,29 +60,22 @@ dependencies {
     implementation presentationLibraries.activityCompose
     debugImplementation presentationLibraries.composeTooling
 
-   // api presentationLibraries.lifecycle
-   // api presentationLibraries.viewModelScope
-    //api asynchronousLibraries.livedataKtx
+    implementation lyfecycleLibraries.livedataCore
+    implementation lyfecycleLibraries.livedataKtx
+    implementation lyfecycleLibraries.runtime
+    implementation lyfecycleLibraries.viewmodel
 
     implementation "org.koin:koin-android:2.2.0"
     implementation "org.koin:koin-androidx-scope:2.2.0"
     implementation "org.koin:koin-androidx-viewmodel:2.2.0"
     implementation "org.koin:koin-androidx-fragment:2.2.0"
 
-
-    testImplementation testLibraries.junit
-    androidTestImplementation androidTestLibraries.androidxJunit
-    androidTestImplementation androidTestLibraries.espressoCore
-    androidTestImplementation androidTestLibraries.composeJunit
-
-
     implementation asynchronousLibraries.coroutineAndroid
     implementation asynchronousLibraries.coroutineCore
 
-    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.4.0-beta01"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-beta01"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-beta01"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-beta01"
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
 
 
 }

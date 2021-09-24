@@ -1,7 +1,8 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
 apply from: '../config/dependencies.gradle'
 
 android {
@@ -41,10 +42,13 @@ dependencies {
     implementation networkLibraries.okHttp
     implementation networkLibraries.logging
 
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
+
     implementation asynchronousLibraries.coroutineCore
     implementation asynchronousLibraries.coroutineTest
 
     testImplementation testLibraries.junit
-    testImplementation testLibraries.hamcrest
+    //testImplementation testLibraries.hamcrest
     testImplementation testLibraries.mockito
 }

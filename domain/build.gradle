@@ -2,16 +2,21 @@ plugins {
     id 'java-library'
     id 'kotlin'
 }
+
 apply from: '../config/dependencies.gradle'
 
 dependencies {
     implementation asynchronousLibraries.coroutineCore
-    implementation testLibraries.hamcrest
+    //implementation testLibraries.hamcrest
     implementation testLibraries.mockito
     implementation testLibraries.junit
+
+    implementation 'javax.inject:javax.inject:1'
+
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7
+
 }

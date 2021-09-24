@@ -1,9 +1,9 @@
 package com.douglasalipio.weathercheck.weatherforecast
 
-import com.douglasalipio.weathercheck.domain.entity.WeatherInfoEntity
+import com.douglasalipio.weathercheck.weatherforecast.mapper.WeatherInfoPresentation
 
-sealed class WeatherInfoState {
-    object Error : WeatherInfoState()
-    object Loading : WeatherInfoState()
-    data class Data(val weatherInfoEntity : WeatherInfoEntity) : WeatherInfoState()
-}
+data class WeatherInfoState(
+    val isLoading: Boolean = false,
+    val error: String = "",
+    val weatherInfo: WeatherInfoPresentation? = null
+)

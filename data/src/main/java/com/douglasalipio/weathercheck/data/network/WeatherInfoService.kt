@@ -8,7 +8,7 @@ import retrofit2.http.Query
 private const val APP_ID = "bd8326266ffeb1b662cf75fadf5dee2a"
 private const val DEFAULT_UNITS = "metric"
 
-interface ApiHelper {
+interface WeatherInfoService {
 
     @GET("/data/2.5/weather")
     suspend fun getWeather(

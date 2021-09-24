@@ -10,22 +10,20 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
 
 @ExperimentalCoroutinesApi
-class WeatherRepositoryImp(
+class WeatherRepositoryImp @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val weatherMapper: WeatherModelToWeatherMapper,
     private val forecastMapper: ForecastModelToForecastMapper
 ) : WeatherRepository {
 
-    override suspend fun requestWeatherBy(city: String): Flow<WeatherInfoEntity> {
-        return flow {
-            val weather = weatherMapper.map(remoteDataSource.getWeatherBy(city))
-            val forecasts = forecastMapper.mapToList(remoteDataSource.getForecastBy(city))
-            weather.forecastList.addAll(forecasts)
-            emit(weather)
-        }.flowOn(Dispatchers.IO)
+    override suspend fun requestWeatherBy(city: String): WeatherInfoEntity {
+        val weather = weatherMapper.map(remoteDataSource.getWeatherBy(city))
+        val forecasts = forecastMapper.mapToList(remoteDataSource.getForecastBy(city))
+        weather.forecastList.addAll(forecasts)
+        return weather
     }
-
 }

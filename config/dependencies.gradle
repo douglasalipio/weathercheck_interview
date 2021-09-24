@@ -15,14 +15,18 @@ ext {
     asynchronousLibraries = [
             coroutineCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3",
             coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3",
-            coroutineTest   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3",
-            livedataKtx : "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+            coroutineTest   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3"
 
     ]
-
+    lyfecycleLibraries =[
+            livedataCore : "androidx.lifecycle:lifecycle-livedata-core-ktx:2.4.0-beta01",
+            livedataKtx:  "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-beta01",
+            runtime: "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-beta01",
+            viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-beta01"
+    ]
     testLibraries = [
             junit   : "junit:junit:4.13.2",
-            hamcrest: "org.hamcrest:hamcrest-all:1.3",
+            hamcrest: "org.hamcrest:hamcrest:1.3",
             mockito : "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
     ]
 
@@ -40,11 +44,7 @@ ext {
             composeMaterial: "androidx.compose.material:material:$compose_version",
             composePreview : "androidx.compose.ui:ui-tooling-preview:$compose_version",
             composeTooling :"androidx.compose.ui:ui-tooling:$compose_version",
-            activityCompose: "androidx.activity:activity-compose:1.3.1",
-            lifecycle      : "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-beta01",
-            viewModelScope : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-beta01"
-
-
+            activityCompose: "androidx.activity:activity-compose:1.3.1"
     ]
 
 
