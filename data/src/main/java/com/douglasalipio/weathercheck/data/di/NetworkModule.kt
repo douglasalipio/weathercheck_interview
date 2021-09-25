@@ -1,6 +1,12 @@
 package com.douglasalipio.weathercheck.data.di
 
 import com.douglasalipio.weathercheck.data.network.WeatherInfoService
+import com.douglasalipio.weathercheck.data.remote.RemoteDataSource
+import com.douglasalipio.weathercheck.data.remote.RemoteDataSourceImp
+import com.douglasalipio.weathercheck.data.weatherinfo.WeatherRepositoryImp
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.ForecastModelToForecastMapper
+import com.douglasalipio.weathercheck.data.weatherinfo.mapper.WeatherModelToWeatherMapper
+import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = " https://jsonplaceholder.typicode.com/"
+    private const val BASE_URL = "http://api.openweathermap.org"
 
     @Provides
     @Singleton
@@ -39,6 +45,24 @@ object NetworkModule {
     @Singleton
     fun provideWeatherInfoService(retrofit: Retrofit): WeatherInfoService {
         return retrofit.create(WeatherInfoService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherInfoRemoteSource(weatherInfoService: WeatherInfoService): RemoteDataSource {
+        return RemoteDataSourceImp(weatherInfoService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherInfoRepository(
+        remoteDataSource: RemoteDataSource
+    ): WeatherRepository {
+        return WeatherRepositoryImp(
+            remoteDataSource,
+            WeatherModelToWeatherMapper(),
+            ForecastModelToForecastMapper()
+        )
     }
 
     private fun makeLoggingInterceptor(isDebug: Boolean = true): HttpLoggingInterceptor {

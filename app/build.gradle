@@ -50,6 +50,7 @@ android {
 
 dependencies {
     implementation project(path: ':domain')
+    implementation project(path: ':data')
 
     implementation presentationLibraries.androidxCore
     implementation presentationLibraries.appCompat
@@ -65,16 +66,14 @@ dependencies {
     implementation lyfecycleLibraries.runtime
     implementation lyfecycleLibraries.viewmodel
 
-    implementation "org.koin:koin-android:2.2.0"
-    implementation "org.koin:koin-androidx-scope:2.2.0"
-    implementation "org.koin:koin-androidx-viewmodel:2.2.0"
-    implementation "org.koin:koin-androidx-fragment:2.2.0"
-
     implementation asynchronousLibraries.coroutineAndroid
     implementation asynchronousLibraries.coroutineCore
 
-    implementation "com.google.dagger:hilt-android:2.38.1"
+
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-android:2.38.1"
     kapt "com.google.dagger:hilt-compiler:2.38.1"
 
 

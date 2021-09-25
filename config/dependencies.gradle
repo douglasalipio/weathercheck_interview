@@ -13,9 +13,9 @@ ext {
     ]
 
     asynchronousLibraries = [
-            coroutineCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3",
-            coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3",
-            coroutineTest   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3"
+            coroutineCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9",
+            coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9",
+            coroutineTest   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9"
 
     ]
     lyfecycleLibraries =[

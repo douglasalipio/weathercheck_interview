@@ -26,23 +26,22 @@ class WeatherInfoViewModel @Inject constructor(
     val state: State<WeatherInfoState> = _state
 
     fun fetchWeatherForecast(city: String) {
-        getWeatherInfoUseCase(GetWeatherInfoUseCase.Params("")).onEach {
 
-            getWeatherInfoUseCase(GetWeatherInfoUseCase.Params(city)).onEach { result ->
-                when (result) {
-                    is Resource.Success<WeatherInfoEntity> -> {
-                        _state.value = WeatherInfoState(weatherInfo = mapper.map(it.data!!))
-                    }
-                    is Resource.Error<WeatherInfoEntity> -> {
-                        _state.value = WeatherInfoState(
-                            error = result.message ?: "An unexpected error occured"
-                        )
-                    }
-                    is Resource.Loading<WeatherInfoEntity> -> {
-                        _state.value = WeatherInfoState(isLoading = true)
-                    }
+        getWeatherInfoUseCase(GetWeatherInfoUseCase.Params("Recife")).onEach { result ->
+            when (result) {
+                is Resource.Success<WeatherInfoEntity> -> {
+                    _state.value = WeatherInfoState(weatherInfo = mapper.map(result.data!!))
+                }
+                is Resource.Error<WeatherInfoEntity> -> {
+                    _state.value = WeatherInfoState(
+                        error = result.message ?: "An unexpected error occurred"
+                    )
+                }
+                is Resource.Loading<WeatherInfoEntity> -> {
+                    _state.value = WeatherInfoState(isLoading = true)
                 }
             }
+
         }.launchIn(viewModelScope)
     }
 }
