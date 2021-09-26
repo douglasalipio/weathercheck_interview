@@ -4,11 +4,9 @@ import com.douglasalipio.weathercheck.domain.entity.WeatherInfoEntity
 import com.douglasalipio.weathercheck.domain.repository.WeatherRepository
 import com.douglasalipio.weathercheck.domain.usecase.GetWeatherInfoUseCase
 import com.nhaarman.mockitokotlin2.given
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
@@ -31,13 +29,15 @@ class GetWeatherInfoInfoEntityUseCaseTest {
     fun `should retrieve weather forecast data`() = runBlocking {
 
         //given
-        val weatherFlowExpected = flowOf(mockWeather())
+        val weatherFlow = mockWeather()
         val params = GetWeatherInfoUseCase.Params("Recife")
-        given(weatherRepositoryMock.requestWeatherBy(anyString())).willReturn(weatherFlowExpected)
+        given(weatherRepositoryMock.requestWeatherBy(anyString())).willReturn(weatherFlow)
+
         //when
-        val weatherFlowActual = getWeatherInfoUseCase.execute(params).single()
+        val weatherFlowActual = getWeatherInfoUseCase.invoke(params).first()
+
         //Then
-        assertEquals(weatherFlowExpected.first(), weatherFlowActual)
+        assertNotNull(weatherFlowActual)
     }
 
     private fun mockWeather() = WeatherInfoEntity(

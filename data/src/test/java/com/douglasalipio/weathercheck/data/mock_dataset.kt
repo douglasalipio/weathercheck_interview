@@ -1,4 +1,3 @@
-import com.douglasalipio.weathercheck.data.model.*
 import com.douglasalipio.weathercheck.data.weatherinfo.model.*
 import com.douglasalipio.weathercheck.data.weatherinfo.model.List
 import com.douglasalipio.weathercheck.domain.entity.Forecast

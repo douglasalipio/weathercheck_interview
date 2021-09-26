@@ -43,7 +43,7 @@ class WeatherInfoEntityRepositoryTest {
         given(remoteDataSourceMock.getForecastBy(anyString())).willReturn(mockForecastModel())
 
         //When
-        val weatherActual = weatherRepository.requestWeatherBy("Recife").first()
+        val weatherActual = weatherRepository.requestWeatherBy("Recife")
 
         //Then
         assertEquals(mockWeatherModel().name, weatherActual.city)
