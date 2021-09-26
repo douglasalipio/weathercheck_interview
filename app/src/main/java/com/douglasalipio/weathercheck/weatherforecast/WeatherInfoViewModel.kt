@@ -27,7 +27,7 @@ class WeatherInfoViewModel @Inject constructor(
 
     fun fetchWeatherForecast(city: String) {
 
-        getWeatherInfoUseCase(GetWeatherInfoUseCase.Params("Recife")).onEach { result ->
+        getWeatherInfoUseCase(GetWeatherInfoUseCase.Params(city)).onEach { result ->
             when (result) {
                 is Resource.Success<WeatherInfoEntity> -> {
                     _state.value = WeatherInfoState(weatherInfo = mapper.map(result.data!!))

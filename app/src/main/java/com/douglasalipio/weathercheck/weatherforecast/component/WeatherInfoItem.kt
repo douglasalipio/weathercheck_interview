@@ -2,6 +2,7 @@ package com.douglasalipio.weathercheck.weatherforecast.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,15 +23,15 @@ import com.skydoves.landscapist.glide.GlideImage
 fun WeatherInfoItem(
     forecast: Forecast
 ) {
-    Box(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp)
     ) {
-
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-
+            modifier = Modifier
+                .padding(5.dp)
             ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(

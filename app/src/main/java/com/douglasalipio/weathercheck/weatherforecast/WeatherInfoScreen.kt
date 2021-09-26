@@ -16,16 +16,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.douglasalipio.weathercheck.weatherforecast.component.WeatherInfoHeader
 import com.douglasalipio.weathercheck.weatherforecast.component.WeatherInfoItem
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun WeatherForecastScreen(viewModel: WeatherInfoViewModel = hiltViewModel()) {
     val state = viewModel.state.value
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             val forecasts = state.weatherInfo?.forecastList ?: emptyList()
-
+            stickyHeader {
+                WeatherInfoHeader(
+                    country = state.weatherInfo?.country ?: "",
+                    city = state.weatherInfo?.city ?: ""
+                )
+            }
             items(forecasts) {
                 WeatherInfoItem(forecast = it)
             }

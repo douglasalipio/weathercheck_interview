@@ -30,7 +30,7 @@ class WeatherInfoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.fetchWeatherForecast("Recife")
+        viewModel.fetchWeatherForecast("Limerick")
 
         setContent() {
             WeatherCheckTheme {
