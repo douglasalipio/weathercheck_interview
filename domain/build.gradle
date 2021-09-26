@@ -7,7 +7,6 @@ apply from: '../config/dependencies.gradle'
 
 dependencies {
     implementation asynchronousLibraries.coroutineCore
-    //implementation testLibraries.hamcrest
     implementation testLibraries.mockito
     implementation testLibraries.junit
 

@@ -59,7 +59,7 @@ dependencies {
     implementation presentationLibraries.composeMaterial
     implementation presentationLibraries.composePreview
     implementation presentationLibraries.activityCompose
-    implementation "com.github.skydoves:landscapist-glide:1.3.6"
+    implementation presentationLibraries.glid
     debugImplementation presentationLibraries.composeTooling
 
     implementation lyfecycleLibraries.livedataCore
@@ -70,12 +70,11 @@ dependencies {
     implementation asynchronousLibraries.coroutineAndroid
     implementation asynchronousLibraries.coroutineCore
 
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-    implementation "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation presentationLibraries.threeten
+    implementation dependencyInjectionLibraries.hiltViewmodel
+    implementation dependencyInjectionLibraries.hiltNavigation
+    implementation dependencyInjectionLibraries.hiltAndroid
+    kapt dependencyInjectionLibraries.hiltCompile
 
 
 }

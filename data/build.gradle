@@ -37,18 +37,17 @@ android {
 dependencies {
     implementation project(path: ':domain')
 
-    api 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
-    api "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+    api networkLibraries.retrofit
+    implementation networkLibraries.retrofitConverter
+    implementation networkLibraries.okHttp
+    api networkLibraries.logging
 
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation dependencyInjectionLibraries.hiltAndroid
+    kapt dependencyInjectionLibraries.hiltCompile
 
     implementation asynchronousLibraries.coroutineCore
     implementation asynchronousLibraries.coroutineTest
 
     testImplementation testLibraries.junit
-    //testImplementation testLibraries.hamcrest
     testImplementation testLibraries.mockito
 }
